@@ -1,10 +1,10 @@
 package com.vis.finance;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
+
+import com.vis.finance.pojo.Portfolio;
+import com.vis.finance.utility.ConnectionUtil;
+import com.vis.finance.view.PortfolioView;
 
 /**
  * Hello world!
@@ -12,14 +12,16 @@ import java.sql.Statement;
  */
 public class App 
 {
-    public static void main( String[] args ) throws ClassNotFoundException, SQLException
+    public static void main( String[] args ) throws Exception
     {
-        System.out.println( "Hello World!" );
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/world", "root", "yadaTOt3070##");
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery("select * from person");
-        System.out.println(rs.next());
-        System.out.println(rs.getInt(1) + "  " + rs.getString(2));
+    	List<Portfolio> portfolios = PortfolioView.getAllPortfolios(ConnectionUtil.getConnectionUsingJDBCPool());
+    	for (Portfolio p: portfolios) {
+    		if (p.getCloseDate() != null && p.getCloseDate().getYear() == 2022) {
+    			System.out.println(p.getName() + " closed this year");
+    		} else if (p.getStartDate() != null && p.getStartDate().getYear() == 2022) {
+    			System.out.println(p.getName() + " opened this year");
+    		}
+    	}
+        
     }
 }

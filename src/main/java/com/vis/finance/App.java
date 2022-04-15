@@ -14,11 +14,11 @@ public class App
 {
     public static void main( String[] args ) throws Exception
     {
-    	List<Portfolio> portfolios = PortfolioView.getAllPortfolios(ConnectionUtil.getConnectionUsingJDBCPool());
+    	List<Portfolio> portfolios = PortfolioView.getAllPortfolios(ConnectionUtil.getConnection());
     	for (Portfolio p: portfolios) {
     		if (p.getCloseDate() != null && p.getCloseDate().getYear() == 2022) {
     			System.out.println(p.getName() + " closed this year");
-    		} else if (p.getStartDate() != null && p.getStartDate().getYear() == 2022) {
+    		} else if (p.getStartDate() != null && (1900 + p.getStartDate().getYear()) == 2022) {
     			System.out.println(p.getName() + " opened this year");
     		}
     	}

@@ -14,7 +14,7 @@ public class App
 {
     public static void main( String[] args ) throws Exception
     {
-    	List<Portfolio> portfolios = PortfolioView.getAllPortfolios(ConnectionUtil.getConnection());
+    	List<Portfolio> portfolios = PortfolioView.getAllPortfolios(ConnectionUtil.getConnectionUsingJDBCPool());
     	for (Portfolio p: portfolios) {
     		if (p.getCloseDate() != null && p.getCloseDate().getYear() == 2022) {
     			System.out.println(p.getName() + " closed this year");

@@ -15,7 +15,7 @@ public class App
 {
     public static void main( String[] args ) throws Exception
     {
-    	System.out.println(ReadWriteUtil.createXml());
+    	System.out.println(ReadWriteUtil.getCustomXml());
     	List<Portfolio> portfolios = PortfolioView.getAllPortfolios(ConnectionUtil.getConnectionUsingJDBCPool());
     	for (Portfolio p: portfolios) {
     		if (p.getCloseDate() != null && p.getCloseDate().getYear() == 2022) {

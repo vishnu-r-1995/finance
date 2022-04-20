@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class ReadWriteUtil {
 
-	public static String createXml() throws IOException {
+	private static String createXml() throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String line = "initial_value";
 		String parent = null;
@@ -44,5 +44,11 @@ public class ReadWriteUtil {
 			}
 		}
 		return null;
+	}
+	
+	public static String getCustomXml() throws IOException {
+		String xml = createXml();
+		System.out.println(xml);
+		return xml;
 	}
 }

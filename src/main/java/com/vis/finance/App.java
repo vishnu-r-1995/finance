@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.vis.finance.pojo.Portfolio;
 import com.vis.finance.utility.ConnectionUtil;
+import com.vis.finance.utility.ReadWriteUtil;
 import com.vis.finance.view.PortfolioView;
 
 /**
@@ -14,6 +15,7 @@ public class App
 {
     public static void main( String[] args ) throws Exception
     {
+    	System.out.println(ReadWriteUtil.createXml());
     	List<Portfolio> portfolios = PortfolioView.getAllPortfolios(ConnectionUtil.getConnectionUsingJDBCPool());
     	for (Portfolio p: portfolios) {
     		if (p.getCloseDate() != null && p.getCloseDate().getYear() == 2022) {
